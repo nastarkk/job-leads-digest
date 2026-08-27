@@ -1,0 +1,9 @@
+{
+  "name": "job-leads-digest",
+  "description": "Sets up a recurring, personalized job-leads email digest for any career function — sourced live from job boards and funding news, matched to your resume and proof-of-work, delivered on a schedule you pick.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Naseer Ahmed",
+    "url": "https://www.linkedin.com/in/nastweets/"
+  }
+}

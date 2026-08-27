@@ -11,7 +11,9 @@ A Claude skill that sets up a personalized, recurring job-leads email digest for
 
 ## How to use it
 
-1. **Install the skill.** Copy this folder into your Claude skills directory (in Claude Code or Cowork, that's typically `.claude/skills/job-leads-digest/`), or add the repo as a plugin if you're using a marketplace setup.
+1. **Install the skill.** Two ways:
+   - **As a plugin (recommended):** in Claude Code, run `/plugin marketplace add nastarkk/job-leads-digest` then `/plugin install job-leads-digest@job-leads-digest`.
+   - **Manual copy:** copy `plugins/job-leads-digest/skills/job-leads-digest/` into your Claude skills directory (typically `.claude/skills/job-leads-digest/`).
 2. **Ask for it.** In a session with scheduled-task support, just say something like *"set up a job digest for me"* or *"email me new sales leadership roles weekly."* No slash command needed — the skill triggers on intent.
 3. **Answer the interview.** Claude will ask, one or two at a time: your field/function, target titles, locations, funding-stage preference, your resume (attach it), your best proof-of-work link (portfolio, GitHub, LinkedIn — whatever fits your field), delivery email + schedule, and any companies you want on a standing watch list.
 4. **Confirm the profile.** Claude shows back what it extracted before scheduling anything — this is your chance to correct anything before it becomes a recurring task.
@@ -28,13 +30,21 @@ Below is a sample for a fictional product designer — illustrative data only, n
 ## Structure
 
 ```
-job-leads-digest/
-├── SKILL.md                       — setup + scheduled-run instructions
-├── references/
-│   ├── search-sources.md          — which job boards work, their quirks
-│   └── email-design.md            — the email's visual/HTML spec
+job-leads-digest/                              — this repo doubles as a plugin marketplace
+├── .claude-plugin/
+│   └── marketplace.json                       — marketplace catalog (lists the plugin below)
+├── plugins/
+│   └── job-leads-digest/
+│       ├── .claude-plugin/
+│       │   └── plugin.json                    — plugin manifest
+│       └── skills/
+│           └── job-leads-digest/
+│               ├── SKILL.md                   — setup + scheduled-run instructions
+│               └── references/
+│                   ├── search-sources.md       — which job boards work, their quirks
+│                   └── email-design.md         — the email's visual/HTML spec
 └── assets/
-    └── demo-email.png             — sample output shown above
+    └── demo-email.png                         — sample output shown above
 ```
 
 Note: the email header is intentionally text-only, no logo. An earlier version included one, but Gmail (and most clients) block external images by default from a sender the recipient hasn't emailed before — that would've meant most candidates' first digest arrived with a broken image unless they went and changed a setting first. Not worth the friction for a tool meant to just work.
