@@ -39,6 +39,18 @@ job-leads-digest/
 
 Note: the email header is intentionally text-only, no logo. An earlier version included one, but Gmail (and most clients) block external images by default from a sender the recipient hasn't emailed before — that would've meant most candidates' first digest arrived with a broken image unless they went and changed a setting first. Not worth the friction for a tool meant to just work.
 
+## Using this with other AI tools
+
+This is packaged as a Claude Skill — a format Claude Code, Cowork, and claude.ai know how to auto-load. Other tools (ChatGPT, Gemini, etc.) don't recognize `SKILL.md`, so dropping this repo into one of them won't do anything on its own.
+
+The content itself isn't Claude-locked, though — it's plain instructions, not proprietary logic. To rebuild this workflow on another tool, by hand:
+
+- Paste `SKILL.md`'s content into a Custom GPT's instructions (or an equivalent system-prompt field elsewhere).
+- ChatGPT has its own **Scheduled Tasks** feature for the recurring-run part — the mechanism differs from Claude's, but the "run this daily/weekly" piece is doable there too.
+- Two gaps to fill yourself: ChatGPT's scheduled tasks don't send email natively (you'd need a Gmail Action or something like Zapier), and web browsing during a task depends on your sandbox/network permissions being enabled — neither is guaranteed out of the box the way Claude's WebFetch/WebSearch and Gmail connector are here.
+
+So: not a one-click port, but the `references/` files (sourcing rules, email design spec) are just as useful as a spec to hand-adapt regardless of which AI tool ends up running it.
+
 ---
 
 Skill crafted by [Naseer Ahmed](https://www.linkedin.com/in/nastweets/) — [starkvibes.com](https://starkvibes.com/)
