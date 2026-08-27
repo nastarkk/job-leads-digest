@@ -34,9 +34,10 @@ job-leads-digest/
 │   ├── search-sources.md          — which job boards work, their quirks
 │   └── email-design.md            — the email's visual/HTML spec
 └── assets/
-    ├── logo.png                   — header logo
     └── demo-email.png             — sample output shown above
 ```
+
+Note: the email header is intentionally text-only, no logo. An earlier version included one, but Gmail (and most clients) block external images by default from a sender the recipient hasn't emailed before — that would've meant most candidates' first digest arrived with a broken image unless they went and changed a setting first. Not worth the friction for a tool meant to just work.
 
 ---
 
